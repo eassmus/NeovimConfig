@@ -1,5 +1,10 @@
 return {
     'saghen/blink.nvim',
+    dependencies = {
+      {
+        'Exafunction/codeium.nvim',
+      },
+    },
     build = 'cargo build --release', -- for delimiters
     keys = {
         -- chartoggle
@@ -34,5 +39,15 @@ return {
     },
     -- all modules handle lazy loading internally
     lazy = false,
-    opts = {chartoggle = {enabled = true}, tree = {enabled = true}}
+    opts = {
+      chartoggle = {enabled = true},
+      tree = {enabled = true},
+      cmp = {enabled = true},
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' },
+        providers = {
+          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+        },
+      },
+    },
 }

@@ -34,8 +34,8 @@ require("oil").setup({
     -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
     delete_to_trash = true,
     -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-    skip_confirm_for_simple_edits = false,
-    -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
+    skip_confirm_for_simple_edits = true, 
+  -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
     -- (:help prompt_save_on_select_new_entry)
     prompt_save_on_select_new_entry = true,
     -- Oil will automatically delete hidden buffers after this delay
@@ -198,18 +198,14 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = 'Telescope buffers'})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,
                {desc = 'Telescope help tags'})
 
--- outline
-
-require("outline").setup({})
-
 -- lua-line
 
 require("lualine").setup({
     options = {theme = 'oxocarbon'},
     sections = {
         lualine_a = {'filename'},
-        lualine_b = {'diff', 'diagnostiscs'},
-        lualine_c = {},
+        lualine_b = {'diff'},
+        lualine_c = {'diagnostiscs'},
         lualine_x = {},
         lualine_y = {},
         lualine_z = {'location', 'progress'}
@@ -223,3 +219,30 @@ require("obsidian").setup({
         {name = "Worldbuilding", path = "~/Projects/FA25/Worldbuilding"}
     }
 })
+
+-- codeium
+
+require("codeium").setup({
+    virtual_text = {
+      enabled = true,
+      -- dont incoue .c and .cpp
+      filetypes = {c = false, cpp = false, python = false},
+      default_filetype_enabled = true,
+      key_bindings = {
+        accept = "<S-Tab>",
+      }
+    }
+})
+
+--auto pairs
+
+require("nvim-autopairs").setup({})
+
+-- claude
+
+require("claude-code").setup()
+
+-- unity
+
+-- require("nvim-unity-sync").setup()
+

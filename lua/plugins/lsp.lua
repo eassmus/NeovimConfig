@@ -41,12 +41,30 @@ return {
 
         -----------
         -- SERVERS
+        require'lspconfig'.omnisharp.setup {
+          cmd = {
+            "dotnet",
+            vim.fn.stdpath "data" .. "\\mason\\packages\\omnisharp\\libexec\\OmniSharp.dll",
+          },
+          settings = {
+            FormattingOptions = {
+              EnableEditorConfigSupport = false,
+              OrganizeImports = true,
+            },
+            Sdk = {
+              IncludePrereleases = true,
+            },
+          },
+        }
         require'lspconfig'.html.setup {}
         require'lspconfig'.cssls.setup {}
         require'lspconfig'.jsonls.setup {}
         require'lspconfig'.tailwindcss.setup {}
+        require'lspconfig'.nixd.setup {}
         require'lspconfig'.ts_ls.setup {}
+        require'lspconfig'.csharp_ls.setup {}
         require'lspconfig'.rust_analyzer.setup {}
+        require'lspconfig'.clangd.setup {}
         vim.lsp.config('lua_ls', {
             cmd = {'lua-language-server'}, -- Or the path to your lua_ls executable
             filetypes = {'lua'},
@@ -65,7 +83,9 @@ return {
         vim.lsp.enable('lua_ls')
         require'lspconfig'.basedpyright.setup {
             settings = {
-                basedpyright = {analysis = {diagnosticSeverityOverrides = {}}}
+                basedpyright = {
+                    typeCheckingMode = "off",
+                }
             }
         }
         require'lspconfig'.eslint.setup {

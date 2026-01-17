@@ -10,3 +10,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
                                         {clear = true}),
     callback = function() vim.highlight.on_yank() end
 })
+
+vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
+vim.keymap.set("n", "+", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically

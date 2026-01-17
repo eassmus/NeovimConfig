@@ -15,7 +15,7 @@ vim.opt.signcolumn = "yes:1"
 vim.opt.scrolloff = 8
 vim.opt.showcmd = true
 
-vim.opt_local.conceallevel = 2
+vim.opt.conceallevel = 2
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -34,3 +34,15 @@ vim.opt.showmode = false
 
 -- No automatic comment insertion
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
+vim.diagnostic.config({
+        signs = {
+            active = true,
+            text = {
+                [vim.diagnostic.severity.ERROR] = " ", -- Example error icon
+                [vim.diagnostic.severity.WARN] = " ",  -- Your custom warning icon
+                [vim.diagnostic.severity.HINT] = " ",  -- Example hint icon
+                [vim.diagnostic.severity.INFO] = " ",  -- Example info icon
+            },
+        },
+    })

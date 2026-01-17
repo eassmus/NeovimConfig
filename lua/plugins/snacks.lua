@@ -49,14 +49,15 @@ return {
             }
         },
         explorer = {enabled = false},
-        indent = {enabled = true},
+        indent = {enabled = false},
         input = {enabled = true},
         picker = {enabled = false},
         notifier = {enabled = false},
         quickfile = {enabled = true},
         scope = {enabled = true},
-        scroll = {enabled = true},
-        statuscolumn = {enabled = true},
+        scroll = {enabled = false},
+        statuscolumn = {enabled = false},
+        terminal = {enable = true},
         words = {enabled = true}
     }
 }
